@@ -1,85 +1,93 @@
-import { Grid, Paper, Typography, Box } from "@mui/material";
-
+import React from "react";
+import { Grid, Paper, Typography, Box, Stack, Avatar } from "@mui/material";
+// Import Ikon-ikon yang diperlukan
+import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
+import GroupIcon from "@mui/icons-material/Group";
+import LocalLaundryServiceIcon from "@mui/icons-material/LocalLaundryService";
+import CheckCircleIcon from "@mui/icons-material/CheckCircle";
+import MeetingRoomIcon from "@mui/icons-material/MeetingRoom";
+import StatCard from "./components/StatCard";
+import AddDataCard from "./components/AddDataCard";
 export const metadata = {
-  title: "Dashboard",
+  title: "Dashboard Profesional",
   description: "Homepage for the admin dashboard",
 };
 
+const statsData = [
+  {
+    id: 1,
+    title: "Total Pendapatan",
+    value: "Rp 15.2M",
+    icon: <AttachMoneyIcon />,
+    color: "primary", // Merujuk ke theme.palette.primary
+    trend: { isUp: true, percentage: "+12%", label: "dari bulan lalu" },
+  },
+  {
+    id: 2,
+    title: "Total Pengguna",
+    value: "1,250",
+    caption: "users",
+    icon: <GroupIcon />,
+    color: "info", // Merujuk ke theme.palette.info (biasanya biru muda)
+    trend: { isUp: true, percentage: "+5%", label: "minggu ini" },
+  },
+  {
+    id: 3,
+    title: "Laundry Pending",
+    value: "34",
+    caption: "orders",
+    icon: <LocalLaundryServiceIcon />,
+    color: "warning", // Oranye/Kuning untuk status tertunda
+    trend: {
+      isUp: false,
+      percentage: "-2%",
+      label: "lebih sedikit dari kemarin",
+    },
+  },
+  {
+    id: 4,
+    title: "Unit Kost Kosong",
+    value: "3",
+    icon: <MeetingRoomIcon />,
+    color: "error",
+    trend: {
+      isUp: true,
+      percentage: "+3",
+      label: "Kamar tersedia",
+    },
+  },
+];
+
+// --- 3. HALAMAN UTAMA ---
 export default function DashboardPage() {
   return (
-    <Box>
-      <Typography variant="h4" gutterBottom>
-        Selamat Datang, Admin!
-      </Typography>
+    <Box sx={{ p: 3 }}>
+      <Box sx={{ mb: 4 }}>
+        <Typography variant="h4" fontWeight={700} gutterBottom>
+          Selamat Datang, Admin!
+        </Typography>
+        <Typography variant="body1" color="text.secondary">
+          Berikut adalah ringkasan performa bisnis Anda hari ini.
+        </Typography>
+      </Box>
 
       {/* Grid Container */}
       <Grid container spacing={3}>
-        {/* Kartu 1 - Total Pengguna */}
-        <Grid size={{ xs: 12, md: 4 }}>
-          <Paper
-            sx={{ p: 3, display: "flex", flexDirection: "column", height: 140 }}
-          >
-            <Typography
-              component="h2"
-              variant="h6"
-              color="primary"
-              gutterBottom
-            >
-              Total Pengguna
-            </Typography>
-            <Typography component="p" variant="h4">
-              1,250
-            </Typography>
-            <Typography color="text.secondary" sx={{ flex: 1 }}>
-              naik 5% dari kemarin
-            </Typography>
-          </Paper>
-        </Grid>
+        {statsData.map((stat) => (
+          <Grid key={stat.id} size={{ xs: 12, sm: 6, md: 4, lg: 2.4 }}>
+            <StatCard
+              title={stat.title}
+              value={stat.value}
+              icon={stat.icon}
+              color={stat.color}
+              trend={stat.trend}
+              caption={stat.caption || ""}
+            />
+          </Grid>
+        ))}
 
-        {/* Kartu 2 - Pendapatan */}
-        {/* PERBAIKAN: Mengubah 'item xs={12} md={4}' menjadi 'size={{ xs: 12, md: 4 }}' */}
-        <Grid size={{ xs: 12, md: 4 }}>
-          <Paper
-            sx={{ p: 3, display: "flex", flexDirection: "column", height: 140 }}
-          >
-            <Typography
-              component="h2"
-              variant="h6"
-              color="primary"
-              gutterBottom
-            >
-              Pendapatan
-            </Typography>
-            <Typography component="p" variant="h4">
-              Rp 5.000.000
-            </Typography>
-            <Typography color="text.secondary" sx={{ flex: 1 }}>
-              bulan ini
-            </Typography>
-          </Paper>
-        </Grid>
-
-        {/* Kartu 3 - Pesanan Baru */}
-        {/* PERBAIKAN: Mengubah 'item xs={12} md={4}' menjadi 'size={{ xs: 12, md: 4 }}' */}
-        <Grid size={{ xs: 12, md: 4 }}>
-          <Paper
-            sx={{ p: 3, display: "flex", flexDirection: "column", height: 140 }}
-          >
-            <Typography
-              component="h2"
-              variant="h6"
-              color="primary"
-              gutterBottom
-            >
-              Pesanan Baru
-            </Typography>
-            <Typography component="p" variant="h4">
-              34
-            </Typography>
-            <Typography color="text.secondary" sx={{ flex: 1 }}>
-              perlu diproses
-            </Typography>
-          </Paper>
+        <Grid size={{ xs: 12, sm: 6, md: 4, lg: 2.4 }}>
+          <AddDataCard />
         </Grid>
       </Grid>
     </Box>
