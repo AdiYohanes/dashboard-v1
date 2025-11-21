@@ -5,7 +5,7 @@ import { Box, CssBaseline, Toolbar } from "@mui/material";
 
 // Import Komponen Kita
 import Navbar from "./components/Navbar";
-import Sidebar from "./components/Sidebar";
+import Sidebar from "./components/Sidebar/Sidebar";
 
 const drawerWidth = 240;
 

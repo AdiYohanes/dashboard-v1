@@ -1,5 +1,9 @@
-import React from "react";
 import { Grid, Paper, Typography, Box } from "@mui/material";
+
+export const metadata = {
+  title: "Dashboard",
+  description: "Homepage for the admin dashboard",
+};
 
 export default function DashboardPage() {
   return (
@@ -8,10 +12,10 @@ export default function DashboardPage() {
         Selamat Datang, Admin!
       </Typography>
 
-      {/* Grid Container untuk Kartu Statistik */}
+      {/* Grid Container */}
       <Grid container spacing={3}>
-        {/* Kartu 1 */}
-        <Grid item xs={12} md={4}>
+        {/* Kartu 1 - Total Pengguna */}
+        <Grid size={{ xs: 12, md: 4 }}>
           <Paper
             sx={{ p: 3, display: "flex", flexDirection: "column", height: 140 }}
           >
@@ -32,8 +36,9 @@ export default function DashboardPage() {
           </Paper>
         </Grid>
 
-        {/* Kartu 2 */}
-        <Grid item xs={12} md={4}>
+        {/* Kartu 2 - Pendapatan */}
+        {/* PERBAIKAN: Mengubah 'item xs={12} md={4}' menjadi 'size={{ xs: 12, md: 4 }}' */}
+        <Grid size={{ xs: 12, md: 4 }}>
           <Paper
             sx={{ p: 3, display: "flex", flexDirection: "column", height: 140 }}
           >
@@ -54,8 +59,9 @@ export default function DashboardPage() {
           </Paper>
         </Grid>
 
-        {/* Kartu 3 */}
-        <Grid item xs={12} md={4}>
+        {/* Kartu 3 - Pesanan Baru */}
+        {/* PERBAIKAN: Mengubah 'item xs={12} md={4}' menjadi 'size={{ xs: 12, md: 4 }}' */}
+        <Grid size={{ xs: 12, md: 4 }}>
           <Paper
             sx={{ p: 3, display: "flex", flexDirection: "column", height: 140 }}
           >

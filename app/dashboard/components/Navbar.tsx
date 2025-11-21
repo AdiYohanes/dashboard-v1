@@ -120,7 +120,7 @@ export default function Navbar({ drawerWidth }: { drawerWidth: number }) {
             }}
           >
             <Avatar
-              alt="Rizky Fauzan"
+              alt="Christian Agusta"
               src="https://i.pravatar.cc/150?img=12"
               sx={{ width: 40, height: 40 }}
             />
@@ -129,10 +129,10 @@ export default function Navbar({ drawerWidth }: { drawerWidth: number }) {
                 variant="subtitle2"
                 sx={{ fontWeight: "bold", lineHeight: 1.2 }}
               >
-                Rizky Fauzan
+                Christian Agusta
               </Typography>
               <Typography variant="caption" color="text.secondary">
-                rizky@example.com
+                agusta@example.com
               </Typography>
             </Box>
             <KeyboardArrowDownIcon color="action" />
